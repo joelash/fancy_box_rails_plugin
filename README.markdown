@@ -72,6 +72,7 @@ This plugin covers the 80% use case, that basically means that it will help you 
 Credits
 -------
 
-* based off of the fancy_box jquery plugin by : http://fancy.klade.lv/
+* based off of the fancy_box_rails_plugin by : http://github.com/vanntastic/fancy_box_rails_plugin
+  * originally based off of the fancy_box jquery plugin by : http://fancy.klade.lv/
 
-Copyright (c) 2009 Vann Ek, released under the MIT license
+Copyright (c) 2020 Joel Friedman, released under the MIT license
