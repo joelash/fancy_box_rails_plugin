@@ -6,9 +6,15 @@ FancyBox is a rails plugin wrapper for a jquery plugin wit the same name. It's e
 Installation
 ------------
 
-* run rake fancy_box:install:all
+* ./script/plugin install <git_url> 
+  * this will copy css/js/images all to the correct locations
 * somewhere in the head of your page, put <%= include_fancy_box %>
-* That's it!
+
+Uninstallation
+--------------
+
+* ./script/plugin remove fancy_box_rails_plugin
+  * this will remove css/js/images that were added during installation
 
 Usage
 -----
@@ -75,4 +81,4 @@ Credits
 * based off of the fancy_box_rails_plugin by : http://github.com/vanntastic/fancy_box_rails_plugin
   * originally based off of the fancy_box jquery plugin by : http://fancy.klade.lv/
 
-Copyright (c) 2020 Joel Friedman, released under the MIT license
+Copyright (c) 2010 Joel Friedman, released under the MIT license
