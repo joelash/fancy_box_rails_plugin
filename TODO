@@ -1,0 +1,2 @@
+* Share code between install.rb and uninstall.rb (1/6/10)
+* link_to_image <image_name> is still giving a caption and shouldn't (1/6/10)
