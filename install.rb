@@ -19,4 +19,4 @@ FileUtils.cp_r js_files, JS
 # Install images
 Dir.mkdir IMGS  unless File.exists?(IMGS)
 imgs = Dir.glob(File.join(FANCY_BOX_PATH,"images","*.{png,gif}"))
-FileUtils.cp_r imgs, public_path
+FileUtils.cp_r imgs, IMGS
