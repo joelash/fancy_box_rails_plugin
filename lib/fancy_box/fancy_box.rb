@@ -104,6 +104,31 @@ module FancyBox
     concat(content_tag(:div, content, options))
   end
 
+  # creates an inline fancy_box with a title along with the link to view the fancy box
+  # EX: 
+  #   fancy_box :title => "My Fancy Box" do
+  #     <p>Content in my fancy box</p> 
+  #   end
+  # OPTIONS:
+  #   :title = the title of for the fancy box
+  #   :title_tag = the tag for the title defaults to h3
+  #   :title_options = html options for the title tag
+  #   :class = css class (used for link inline fancy box div)
+  #   any other standard html options...
+  #   NOTE: CANNOT provide an id, but the ID of box is returned if you need it
+  def fancy_box_with_link(link_text, options={}, &blk) 
+    box_id = "inline-fancybox-#{random_id}"
+    options[:id] = box_id
+    css_class ||= ""
+    css_class <<  ' fancy'
+    link_options = { :class => css_class }
+    concat(link_to(link_text, "##{box_id}", link_options))
+    fancy_box options, &blk                  
+    box_id
+  end
+
+
+
   protected
   def random_id(num_hash=9999)
     rand(num_hash)
