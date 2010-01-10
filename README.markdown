@@ -33,6 +33,10 @@ NOTE : you can also do:
 
     link_to "Some div", "#some-div", :class => "fancy"
 
+To use it for inline or remote content with a custom fancy box parameters do:
+
+    link_to_custom_box 'Click me', '/path/to/page', { :hideOnContentClick => false }
+
 To use it for images do:
 
     link_to_image "special.jpg"
@@ -73,8 +77,20 @@ OPTIONS :
     :title_options => html options for your title_tag
     :options => standard html options
 
-This plugin covers the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.
+The fancy_box helper method has been extended to allow you to add a link that'll display the inline content you've created with the method:
 
+EXAMPLE :
+
+     fancy_box_with_link 'Click to see something special', :title => "My Special Box" do
+       #This is my special box with content
+     end
+
+note on plugin
+--------------
+
+Originally, this plugin covered the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.
+
+However, I'm working on adding more helper methods that'll cover many of the use cases I come across when I'm using it. If there are cases that have not yet been added, please feel free to let me know.
 Credits
 -------
 

@@ -34,6 +34,20 @@ module FancyBox
     link_to content, link, options
   end
 
+  # another link method for fancy_box, has same options as link_to_box but also take a list of
+  # fancy box options that are passed to the jQuery fancybox() method. Allows you to not have to
+  # write the js or even edit load_fancybox.js
+  # EX :
+  #   link_to_custom_box 'Click me', '/path/to/page', { :hideOnContentClick => false }, :box_class => 'howToDisplay'
+  def link_to_custom_box(content, link, fancy_options={}, options={})                                                                                                                                  
+    box_id = "custom-fancybox-#{random_id}"                                                                                                                                                            
+    options[:id] = box_id                                                                                                                                                                              
+    html = []                                                                                                                                                                                          
+    html << link_to_box(content, link, options)                                                                                                                                                        
+    html << fancy_box_javasript(box_id, fancy_options)                                                                                                                                                
+    html.join($/)                                                                                                                                                                                      
+  end                                                                                                                                                                                                  
+
   # applies fancy box to an image link uses same options as link_to except first arg is image name
   # EX : 
   #   link_to_image "special.jpg"
@@ -130,6 +144,17 @@ module FancyBox
 
 
   protected
+  def fancy_box_javasript(box_id, options={})                                                                                                                                                         
+    content = "$(document).ready(function() {                                                                                                                                                          
+      $('##{box_id}').fancybox({"                                                                                                                                                                      
+    options.each do |key, value|                                                                                                                                                                       
+      content << "'#{key}' : #{value},"                                                                                                                                                                
+    end                                                                                                                                                                                                
+    content.chomp!(',')                                                                                                                                                                                
+    content << '}) });'                                                                                                                                                                                
+    javascript_tag content                                                                                                                                                                             
+  end   
+
   def random_id(num_hash=9999)
     rand(num_hash)
   end
