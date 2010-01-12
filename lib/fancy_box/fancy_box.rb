@@ -44,7 +44,7 @@ module FancyBox
     options[:id] = box_id                                                                                                                                                                              
     html = []                                                                                                                                                                                          
     html << link_to_box(content, link, options)                                                                                                                                                        
-    html << fancy_box_javasript(box_id, fancy_options)                                                                                                                                                
+    html << fancy_box_javascript("##{box_id}", fancy_options)                                                                                                                                                
     html.join($/)                                                                                                                                                                                      
   end                                                                                                                                                                                                  
 
@@ -141,20 +141,25 @@ module FancyBox
     box_id
   end
 
-
-
-  protected
-  def fancy_box_javasript(box_id, options={})                                                                                                                                                         
+  # helper method that creates inline javascript to will set up elements with <selector>
+  # as a fancy box with the provided options
+  # EX :
+  #   fancy_box_javascript '.fancy', :hideOnContentClick => false
+  # OPTIONS:
+  #   options from fancy box, see http://fancybox.net/howto
+  def fancy_box_javascript(selector, options={})
     content = "$(document).ready(function() {                                                                                                                                                          
-      $('##{box_id}').fancybox({"                                                                                                                                                                      
-    options.each do |key, value|                                                                                                                                                                       
+      $('#{selector}').fancybox({"
+    options.each do |key, value| 
       content << "'#{key}' : #{value},"                                                                                                                                                                
-    end                                                                                                                                                                                                
+    end                                                 
     content.chomp!(',')                                                                                                                                                                                
     content << '}) });'                                                                                                                                                                                
     javascript_tag content                                                                                                                                                                             
-  end   
+  end 
 
+
+  protected
   def random_id(num_hash=9999)
     rand(num_hash)
   end

@@ -85,6 +85,15 @@ EXAMPLE :
        #This is my special box with content
      end
 
+
+fancy_box_javascript method
+---------------------------
+The fancy_box_javascript helper method is a methods that creates inline javascript to will set up elements with <selector> as a fancy box with the provided options
+
+EXAMPLE :
+
+     fancy_box_javascript '.fancy', :hideOnContentClick => false
+
 note on plugin
 --------------
 
